@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { PokeomonContext } from "../App";
 
-const Card = ({ pokemon, isSelected, addPokemon, removePokemon }) => {
+const Card = ({ pokemon, isSelected }) => {
+  const { addPokemon, removePokemon } = useContext(PokeomonContext);
   const navigate = useNavigate();
   return (
     <div>
