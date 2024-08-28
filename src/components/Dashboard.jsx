@@ -1,9 +1,9 @@
-import { useContext } from "react";
 import Card from "./Card";
-import { PokeomonContext } from "../App";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const { selectedPokemon } = useContext(PokeomonContext);
+  const selectedPokemon = useSelector((state) => state.PokemonSlice);
+
   return (
     <div>
       {selectedPokemon.length === 0 ? (

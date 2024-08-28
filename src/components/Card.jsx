@@ -1,10 +1,11 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { PokeomonContext } from "../App";
+import { addPokemon, removePokemon } from "../redux/PokemonSlice";
+import { useDispatch } from "react-redux";
 
 const Card = ({ pokemon, isSelected }) => {
-  const { addPokemon, removePokemon } = useContext(PokeomonContext);
+  // const { addPokemon, removePokemon } = useContext(PokeomonContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div>
       <div
@@ -18,7 +19,7 @@ const Card = ({ pokemon, isSelected }) => {
       {isSelected ? (
         <button
           onClick={() => {
-            removePokemon(pokemon);
+            dispatch(removePokemon(pokemon));
           }}
         >
           삭제
@@ -26,7 +27,7 @@ const Card = ({ pokemon, isSelected }) => {
       ) : (
         <button
           onClick={() => {
-            addPokemon(pokemon);
+            dispatch(addPokemon(pokemon));
           }}
         >
           추가
